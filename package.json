@@ -1,0 +1,36 @@
+{
+    "version": "1.0.0",
+    "description": "Ball Drop and Grow 2D Web Game Created with Matter JS by @igamingdev1",
+    "name": "ball-drop-and-grow",
+    "author": {
+        "name": "igamingdev1",
+        "url": "https://github.com/igamingdev1"
+    },
+    "license": "MIT",
+    "scripts": {
+        "build": "webpack --mode=production --node-env=production",
+        "build:dev": "webpack --mode=development --watch",
+        "serve": "live-server",
+        "format": "prettier --write **/*.js",
+        "lint": "eslint **/*.js",
+        "dev": "npm-run-all --parallel build:dev serve"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.23.2",
+        "@babel/preset-env": "^7.23.2",
+        "babel-loader": "^9.1.3",
+        "eslint": "^8.53.0",
+        "live-server": "^1.2.2",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^3.0.3",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4",
+        "workbox-webpack-plugin": "^7.0.0"
+    },
+    "dependencies": {
+        "firebase": "^10.5.2",
+        "howler": "^2.2.4",
+        "matter-js": "^0.19.0",
+        "particles.js": "^2.0.0"
+    }
+}

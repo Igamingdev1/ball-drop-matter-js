@@ -1,0 +1,29 @@
+{
+    "name": "Circle Drop | 2D Web Game",
+    "short_name": "Circle Drop",
+    "description": "Circle Drop 2D Web Game created using Matter.js by @dnm17_",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#222222",
+    "theme_color": "#2e2e2e",
+    "icons": [
+        {
+            "src": "https://circle-drop.netlify.com/assets/image/icons/orbs-sm.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "https://circle-drop.netlify.com/assets/image/icons/orbs-lg.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "web",
+            "url": "https://circle-drop.netlify.com"
+        }
+    ],
+    "prefer_related_applications": true
+}

@@ -1,0 +1,470 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #222222;
+    scrollbar-width: none;
+    font-family: "Montserrat", sans-serif;
+}
+/* Hide the scrollbar in Webkit-based browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+.particles-container {
+    height: 100vh;
+}
+#myCanvas {
+    cursor: url("assets/image/cursor.png"), auto;
+    display: none;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+.place-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.btn-container {
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    display: none;
+    justify-items: center;
+    gap: 5px;
+}
+
+.btn_restart {
+    display: none;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(68, 68, 68, 0.8);
+    border-radius: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 60%;
+    left: 50%;
+    translate: -50% -50%;
+    box-shadow:
+        0 3px 6px 0 rgba(0, 0, 0, 0.1),
+        0 4px 18px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn_restart img {
+    width: 100%;
+    height: 100%;
+}
+.btn_restart:hover {
+    background-color: rgba(34, 34, 34, 0.5);
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+.btn {
+    height: 35px;
+    background-color: rgba(34, 34, 34, 0.5);
+    cursor: pointer;
+    display: none;
+    border-radius: 8px;
+    border: 2px solid #a0a0a0;
+    color: #ffffff;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+    background-color: rgba(68, 68, 68, 0.8);
+}
+.btn-auth {
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.btn-auth img {
+    height: 80%;
+}
+.btn-music {
+    width: 35px;
+}
+.btn-music img {
+    width: 100%;
+    height: 100%;
+}
+/* Styles for desktop */
+@media screen and (min-width: 1024px) {
+    /* Your desktop-specific CSS rules go here */
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Styles for mobile */
+@media screen and (max-width: 1023px) {
+    /* Your mobile-specific CSS rules go here */
+    body {
+        font-size: 16px;
+    }
+    .btn-container {
+        flex-direction: column-reverse;
+    }
+    .btn-auth {
+        width: 35px;
+    }
+    .btn-auth span {
+        display: none;
+    }
+}
+
+.leaderboard-container {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 380px;
+    border: 3px solid #a0a0a0;
+    border-radius: 10px;
+    /* min-height: 80%; */
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(49, 49, 49, 0.7));
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    height: 75%;
+}
+
+.leaderboard-title {
+    margin: 10px;
+    color: #c9c9c9;
+}
+.leaderboard-list {
+    overflow-y: auto;
+    width: 100%;
+    flex: 1;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+/* Hide the scrollbar in Webkit-based browsers (Chrome, Safari) */
+.leaderboard-list::-webkit-scrollbar {
+    width: 0;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.leaderboard-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background: linear-gradient(to right, rgba(209, 196, 79, 0.8), rgba(221, 208, 93, 0.8));
+    border-radius: 10px;
+}
+.leaderboard-rank span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    /* border-radius: 50%;
+    background-color: rgba(255, 255, 0, 0.756); */
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(218, 213, 213);
+}
+.leaderboard-image {
+    height: 100%;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+.leaderboard-name {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display an ellipsis (...) for overflow */
+}
+.leaderboard-name span:first-child {
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display an ellipsis (...) for overflow */
+    color: white;
+    font-weight: 500;
+}
+.leaderboard-score {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+.leaderboard-score img {
+    height: 100%;
+}
+.leaderboard-score span {
+    color: white;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.tips-card {
+    /* From https://css.glass */
+    background: rgba(80, 80, 80, 0.17);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(80, 80, 80, 0.17);
+
+    margin-top: 30px;
+    padding: 10px;
+    width: 230px;
+    max-height: max-content;
+}
+
+.tips-title {
+    color: #a0a0a0;
+    font-style: italic;
+}
+.tips-body {
+    font-size: 16px;
+    color: #c9c9c9;
+}
+.profile {
+    margin-top: 30px;
+    color: #c9c9c9;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    width: 200px;
+    font-weight: 400;
+}
+.profile_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #a0a0a0;
+    padding-bottom: 15px;
+}
+.profile_name div {
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display an ellipsis (...) for overflow */
+}
+.profile_name div span:first-child {
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display an ellipsis (...) for overflow */
+}
+.profile_name img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.profile_name div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.badge {
+    color: white;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 3px 8px;
+    max-width: fit-content;
+}
+.badge-inti-bumi {
+    background: linear-gradient(to right, #3861d3, #032ea7);
+}
+.badge-sepuh {
+    background: linear-gradient(to right, #ff7300, #ff0000);
+}
+.badge-senior {
+    background: linear-gradient(to right, #f1ef58, #e0e400);
+}
+.badge-junior {
+    background: linear-gradient(to right, #96ee44, #46a804);
+}
+.badge-pemula {
+    background: linear-gradient(to right, #32cfd4, #029ea3);
+}
+.profile_score {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+.card-wrapper {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 3px solid rgba(160, 160, 160, 0.8);
+    padding: 0 20px;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+.card-title {
+    color: #c9c9c9;
+    margin: 15px 0;
+}
+
+.card-list {
+    list-style-type: none;
+    /* Remove default list style */
+    padding: 0;
+    /* Remove default list padding */
+}
+
+.card-list li {
+    margin: 5px 0;
+    padding: 0;
+    line-height: 1.5;
+    list-style: none;
+    /* Remove default list style */
+    display: flex;
+    align-items: center;
+}
+
+.card-list li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.card-list li:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    /* Adjust the width as needed */
+    height: 20px;
+    /* Adjust the height as needed */
+    background-size: cover;
+    /* Adjust the background size as needed */
+    margin-right: 10px;
+    /* Add spacing between the marker and the list item text */
+}
+
+.card-list li.memory-card:before {
+    background-image: url("assets/image/icons/twice.jpg");
+    border-radius: 5px;
+}
+.card-list li.tank-war:before {
+    background-image: url("assets/image/icons/tank.png");
+}
+.card-list li.simple-snake:before {
+    background-image: url("assets/image/icons/snake.png");
+}
+.card-list li.white-dog:before {
+    background-image: url("assets/image/icons/white-dog.svg");
+}
+
+.card-list li a {
+    color: #c9c9c9;
+    text-decoration: none;
+}
+
+.particles-js-canvas-el,
+.place-center {
+    max-height: 100vh;
+}
+
+.copyright {
+    font-family: sans-serif;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 12px;
+}
+
+.copyright a {
+    color: white;
+}
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    4.9% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    5% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
