@@ -10,6 +10,7 @@ import { onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider, Githu
 import { collection, addDoc, onSnapshot, query, orderBy, doc, updateDoc, where, getDocs, serverTimestamp } from "firebase/firestore"
 
 import { auth, db } from "./firebase.js"
+import disableDevtool from "disable-devtool"
 
 // custom toast
 function showSuccessToast(message) {
@@ -203,6 +204,51 @@ async function createUserData(user) {
         showErrorToast(error.message)
     }
 }
+
+// Initialize disable-devtool (loaded via CDN)
+function initDisableDevtool() {
+    if (typeof disableDevtool !== 'undefined') {
+        disableDevtool({
+            // Disable right-click context menu
+            disableMenu: true,
+            
+            // Disable keyboard shortcuts (F12, Ctrl+Shift+I, etc.)
+            disableKeyboard: true,
+            
+            // Clear console periodically
+            clearLog: true,
+            
+            // Disable console methods
+            disableConsole: true,
+            
+            // Detection methods
+            detect: ['size', 'performance'],
+            
+            // Callback when devtools is detected
+            onDetect: function() {
+                document.body.innerHTML = '<div style="text-align:center;padding:50px;font-family:Arial;background:#2e2e2e;color:#f4f4f4;"><h1>Developer Tools Detected</h1><p>Please close developer tools to continue playing.</p><button onclick="location.reload()" style="padding:10px 20px;background:#00b09b;color:white;border:none;border-radius:5px;cursor:pointer;">Reload Game</button></div>';
+            },
+            
+            // Interval for detection (in milliseconds)
+            interval: 500,
+            
+            // Threshold for size detection
+            threshold: 160,
+            
+            // Disable text selection
+            disableSelect: true,
+            
+            // Disable drag
+            disableDrag: true
+        });
+    } else {
+        // Retry after a short delay if script hasn't loaded yet
+        setTimeout(initDisableDevtool, 100);
+    }
+}
+
+// Start the initialization
+initDisableDevtool();
 
 window.addEventListener("load", () => {
     // listen to auth user

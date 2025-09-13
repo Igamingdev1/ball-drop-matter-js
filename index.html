@@ -1,231 +1,234 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
-        <meta name="author" content="@dnm17_" />
-        <meta name="keywords" content="circle drop, 2D web game, Matter.js, @dnm17_, web development" />
-        <meta name="language" content="English" />
 
-        <link rel="manifest" href="manifest.json" />
-        <meta name="theme-color" content="#2e2e2e" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
+    <meta name="author" content="@dnm17_" />
+    <meta name="keywords" content="circle drop, 2D web game, Matter.js, @dnm17_, web development" />
+    <meta name="language" content="English" />
 
-        <!-- Open Graph Metadata for Facebook -->
-        <meta property="og:title" content="Circle Drop | 2D Web Game" />
-        <meta property="og:description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
-        <meta property="og:url" content="https://circle-drop.netlify.com" />
-        <meta property="og:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
-        <meta property="og:site_name" content="Circle Drop | 2D Web Game" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2e2e2e" />
 
-        <!-- Open Graph Metadata for Twitter -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Circle Drop | 2D Web Game" />
-        <meta name="twitter:description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
-        <meta name="twitter:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
-        <meta name="twitter:site" content="@dnm17_" />
-        <meta name="twitter:creator" content="@dnm17_" />
+    <!-- Open Graph Metadata for Facebook -->
+    <meta property="og:title" content="Circle Drop | 2D Web Game" />
+    <meta property="og:description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
+    <meta property="og:url" content="https://circle-drop.netlify.com" />
+    <meta property="og:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
+    <meta property="og:site_name" content="Circle Drop | 2D Web Game" />
 
-        <!-- Open Graph Metadata for Discord -->
-        <meta name="discord:site" content="https://circle-drop.netlify.com" />
-        <meta name="discord:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
+    <!-- Open Graph Metadata for Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Circle Drop | 2D Web Game" />
+    <meta name="twitter:description" content="Circle Drop 2D Web Game created using Matter.js by @dnm17_" />
+    <meta name="twitter:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
+    <meta name="twitter:site" content="@dnm17_" />
+    <meta name="twitter:creator" content="@dnm17_" />
 
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Open Graph Metadata for Discord -->
+    <meta name="discord:site" content="https://circle-drop.netlify.com" />
+    <meta name="discord:image" content="https://circle-drop.netlify.com/assets/image/preview.png" />
 
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet"
-        />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <!-- https://apvarun.github.io/toastify-js/ -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <!-- https://apvarun.github.io/toastify-js/ -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 
-        <title>Circle Drop | 2D Web Game @dnm17_</title>
-    </head>
-    <body>
-        <!-- particles.js container -->
-        <div id="particles-js" class="particles-container"></div>
-        <!-- game canvas -->
-        <canvas id="myCanvas" class="place-center"></canvas>
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
 
-        <!-- buttons music -->
-        <div class="btn-container">
-            <button id="sign-in-google" class="btn btn-auth" aria-label="sign in with google">
-                <img src="assets/image/icons/google.svg" alt="google icon" />
-                <span>Google</span>
-            </button>
-            <button id="sign-in-github" class="btn btn-auth" aria-label="sign in with github">
-                <img src="assets/image/icons/github.svg" alt="github icon" />
-                <span>Github</span>
-            </button>
-            <button id="sign-out" class="btn btn-music" aria-label="sign out">
-                <img src="assets/image/icons/sign-out.svg" alt="sign out" />
-            </button>
-            <button id="btn-music-play" class="btn btn-music" aria-label="play music">
-                <img src="assets/image/icons/sound-play.svg" alt="play" />
-            </button>
-            <button id="btn-music-stop" class="btn btn-music" aria-label="stop music">
-                <img src="assets/image/icons/sound-stop.svg" alt="stop" />
-            </button>
-        </div>
+    <title>Circle Drop | 2D Web Game @dnm17_</title>
+</head>
 
-        <button id="btn-restart" class="btn_restart" aria-label="restart game">
-            <img src="assets/image/icons/restart.svg" alt="restart" />
+<body>
+    <!-- particles.js container -->
+    <div id="particles-js" class="particles-container"></div>
+    <!-- game canvas -->
+    <canvas id="myCanvas" class="place-center"></canvas>
+
+    <!-- buttons music -->
+    <div class="btn-container">
+        <button id="sign-in-google" class="btn btn-auth" aria-label="sign in with google">
+            <img src="assets/image/icons/google.svg" alt="google icon" />
+            <span>Google</span>
         </button>
+        <button id="sign-in-github" class="btn btn-auth" aria-label="sign in with github">
+            <img src="assets/image/icons/github.svg" alt="github icon" />
+            <span>Github</span>
+        </button>
+        <button id="sign-out" class="btn btn-music" aria-label="sign out">
+            <img src="assets/image/icons/sign-out.svg" alt="sign out" />
+        </button>
+        <button id="btn-music-play" class="btn btn-music" aria-label="play music">
+            <img src="assets/image/icons/sound-play.svg" alt="play" />
+        </button>
+        <button id="btn-music-stop" class="btn btn-music" aria-label="stop music">
+            <img src="assets/image/icons/sound-stop.svg" alt="stop" />
+        </button>
+    </div>
 
-        <!-- loading -->
-        <div class="place-center">
-            <div id="loading" class="lds-ripple">
-                <div></div>
-                <div></div>
-            </div>
+    <button id="btn-restart" class="btn_restart" aria-label="restart game">
+        <img src="assets/image/icons/restart.svg" alt="restart" />
+    </button>
+
+    <!-- loading -->
+    <div class="place-center">
+        <div id="loading" class="lds-ripple">
+            <div></div>
+            <div></div>
         </div>
+    </div>
 
-        <!-- card -->
-        <div class="card-wrapper">
-            <div class="profile">
-                <div class="profile_name">
-                    <img id="profile-image" src="assets/image/icons/profile-default.svg" alt="Profile Image" />
-                    <div>
-                        <span id="profile-name">loading...</span>
-                        <span class="badge" id="profile-badge">__ __ __</span>
-                    </div>
-                </div>
-                <div class="profile_score">
-                    <div>
-                        <span>BEST: <span id="profile-score">000</span></span>
-                    </div>
-                    |
-                    <div>
-                        <span>RANK: <span id="profile-rank">00</span></span>
-                    </div>
+    <!-- card -->
+    <div class="card-wrapper">
+        <div class="profile">
+            <div class="profile_name">
+                <img id="profile-image" src="assets/image/icons/profile-default.svg" alt="Profile Image" />
+                <div>
+                    <span id="profile-name">loading...</span>
+                    <span class="badge" id="profile-badge">__ __ __</span>
                 </div>
             </div>
-            <div class="tips-card">
-                <span class="tips-title">Tips :</span>
-                <div class="tips-body">
-                    <p id="tips-text"></p>
+            <div class="profile_score">
+                <div>
+                    <span>BEST: <span id="profile-score">000</span></span>
                 </div>
-            </div>
-        </div>
-
-        <div class="leaderboard-container">
-            <h2 class="leaderboard-title">Leaderboard</h2>
-            <div class="leaderboard-list" id="leaderboard-list">
-                <div class="leaderboard-item">
-                    <div class="leaderboard-rank">
-                        <span style="background-color: #eeff00; border-radius: 50%">1</span>
-                    </div>
-                    <img
-                        class="leaderboard-image"
-                        src="assets/image/icons/profile-default.svg"
-                        onerror="this.onerror=null; this.src='assets/image/icons/profile-default.svg';"
-                        alt="Profile Image"
-                    />
-
-                    <div class="leaderboard-name">
-                        <span>Loading...</span>
-                        <span class="badge">__ __ __</span>
-                    </div>
-                    <div class="leaderboard-score">
-                        <img src="assets/image/icons/star.svg" alt="star" />
-                        <span>000</span>
-                    </div>
+                |
+                <div>
+                    <span>RANK: <span id="profile-rank">00</span></span>
                 </div>
             </div>
         </div>
-
-        <!-- orbs -->
-        <div style="display: none">
-            <img src="assets/image/circles/orbs (1).png" alt="orb" />
-            <img src="assets/image/circles/orbs (2).png" alt="orb" />
-            <img src="assets/image/circles/orbs (3).png" alt="orb" />
-            <img src="assets/image/circles/orbs (4).png" alt="orb" />
-            <img src="assets/image/circles/orbs (5).png" alt="orb" />
-            <img src="assets/image/circles/orbs (6).png" alt="orb" />
-            <img src="assets/image/circles/orbs (7).png" alt="orb" />
-            <img src="assets/image/circles/orbs (8).png" alt="orb" />
-            <img src="assets/image/circles/orbs (9).png" alt="orb" />
-            <img src="assets/image/circles/orbs (10).png" alt="orb" />
-            <img src="assets/image/circles/orbs (11).png" alt="orb" />
-            <img src="assets/image/circles/orbs (12).png" alt="orb" />
-            <img src="assets/image/circles/orbs (13).png" alt="orb" />
-            <img src="assets/image/circles/orbs (14).png" alt="orb" />
-            <img src="assets/image/circles/orbs (15).png" alt="orb" />
-            <img src="assets/image/circles/orbs (16).png" alt="orb" />
-            <img src="assets/image/circles/orbs (17).png" alt="orb" />
-            <img src="assets/image/circles/orbs (18).png" alt="orb" />
-            <img src="assets/image/circles/orbs (19).png" alt="orb" />
-            <img src="assets/image/circles/orbs (20).png" alt="orb" />
-            <img src="assets/image/circles/orbs (21).png" alt="orb" />
-            <img src="assets/image/circles/orbs (22).png" alt="orb" />
-            <img src="assets/image/circles/orbs (23).png" alt="orb" />
-            <img src="assets/image/circles/orbs (24).png" alt="orb" />
-            <img src="assets/image/circles/orbs (25).png" alt="orb" />
-            <img src="assets/image/circles/orbs (26).png" alt="orb" />
-            <img src="assets/image/circles/orbs (27).png" alt="orb" />
-            <img src="assets/image/circles/orbs (28).png" alt="orb" />
-            <img src="assets/image/circles/orbs (29).png" alt="orb" />
-            <img src="assets/image/circles/orbs (30).png" alt="orb" />
-            <img src="assets/image/circles/orbs (31).png" alt="orb" />
-            <img src="assets/image/circles/orbs (32).png" alt="orb" />
-            <img src="assets/image/circles/orbs (33).png" alt="orb" />
-            <img src="assets/image/circles/orbs (34).png" alt="orb" />
-            <img src="assets/image/circles/orbs (35).png" alt="orb" />
-            <img src="assets/image/circles/orbs (36).png" alt="orb" />
-            <img src="assets/image/circles/orbs (37).png" alt="orb" />
-            <img src="assets/image/circles/orbs (38).png" alt="orb" />
-            <img src="assets/image/circles/orbs (39).png" alt="orb" />
+        <div class="tips-card">
+            <span class="tips-title">Tips :</span>
+            <div class="tips-body">
+                <p id="tips-text"></p>
+            </div>
         </div>
+    </div>
 
-        <!-- copyright -->
-        <div class="copyright">
-            Copyright &copy; 2025
-            <a href="https://t.me/casinodev1" target="_blank">iGaming</a>
+    <div class="leaderboard-container">
+        <h2 class="leaderboard-title">Leaderboard</h2>
+        <div class="leaderboard-list" id="leaderboard-list">
+            <div class="leaderboard-item">
+                <div class="leaderboard-rank">
+                    <span style="background-color: #eeff00; border-radius: 50%">1</span>
+                </div>
+                <img class="leaderboard-image" src="assets/image/icons/profile-default.svg"
+                    onerror="this.onerror=null; this.src='assets/image/icons/profile-default.svg';"
+                    alt="Profile Image" />
+
+                <div class="leaderboard-name">
+                    <span>Loading...</span>
+                    <span class="badge">__ __ __</span>
+                </div>
+                <div class="leaderboard-score">
+                    <img src="assets/image/icons/star.svg" alt="star" />
+                    <span>000</span>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-        <script src="src/libs/particles.min.js"></script>
-        <script src="dist/main.js"></script>
+    <!-- orbs -->
+    <div style="display: none">
+        <img src="assets/image/circles/orbs (1).png" alt="orb" />
+        <img src="assets/image/circles/orbs (2).png" alt="orb" />
+        <img src="assets/image/circles/orbs (3).png" alt="orb" />
+        <img src="assets/image/circles/orbs (4).png" alt="orb" />
+        <img src="assets/image/circles/orbs (5).png" alt="orb" />
+        <img src="assets/image/circles/orbs (6).png" alt="orb" />
+        <img src="assets/image/circles/orbs (7).png" alt="orb" />
+        <img src="assets/image/circles/orbs (8).png" alt="orb" />
+        <img src="assets/image/circles/orbs (9).png" alt="orb" />
+        <img src="assets/image/circles/orbs (10).png" alt="orb" />
+        <img src="assets/image/circles/orbs (11).png" alt="orb" />
+        <img src="assets/image/circles/orbs (12).png" alt="orb" />
+        <img src="assets/image/circles/orbs (13).png" alt="orb" />
+        <img src="assets/image/circles/orbs (14).png" alt="orb" />
+        <img src="assets/image/circles/orbs (15).png" alt="orb" />
+        <img src="assets/image/circles/orbs (16).png" alt="orb" />
+        <img src="assets/image/circles/orbs (17).png" alt="orb" />
+        <img src="assets/image/circles/orbs (18).png" alt="orb" />
+        <img src="assets/image/circles/orbs (19).png" alt="orb" />
+        <img src="assets/image/circles/orbs (20).png" alt="orb" />
+        <img src="assets/image/circles/orbs (21).png" alt="orb" />
+        <img src="assets/image/circles/orbs (22).png" alt="orb" />
+        <img src="assets/image/circles/orbs (23).png" alt="orb" />
+        <img src="assets/image/circles/orbs (24).png" alt="orb" />
+        <img src="assets/image/circles/orbs (25).png" alt="orb" />
+        <img src="assets/image/circles/orbs (26).png" alt="orb" />
+        <img src="assets/image/circles/orbs (27).png" alt="orb" />
+        <img src="assets/image/circles/orbs (28).png" alt="orb" />
+        <img src="assets/image/circles/orbs (29).png" alt="orb" />
+        <img src="assets/image/circles/orbs (30).png" alt="orb" />
+        <img src="assets/image/circles/orbs (31).png" alt="orb" />
+        <img src="assets/image/circles/orbs (32).png" alt="orb" />
+        <img src="assets/image/circles/orbs (33).png" alt="orb" />
+        <img src="assets/image/circles/orbs (34).png" alt="orb" />
+        <img src="assets/image/circles/orbs (35).png" alt="orb" />
+        <img src="assets/image/circles/orbs (36).png" alt="orb" />
+        <img src="assets/image/circles/orbs (37).png" alt="orb" />
+        <img src="assets/image/circles/orbs (38).png" alt="orb" />
+        <img src="assets/image/circles/orbs (39).png" alt="orb" />
+    </div>
 
-        <script>
-            let defaultCursorImage = "assets/image/cursor.png"
-            let clickCursorImage = "assets/image/cursor-click.png"
+    <!-- copyright -->
+    <div class="copyright">
+        Copyright &copy; 2025
+        <a href="https://t.me/casinodev1" target="_blank">iGaming</a>
+    </div>
 
-            // Function to change cursor to a custom image
-            const myCanvas = document.getElementById("myCanvas")
-            function changeCursorToCustomImage() {
-                myCanvas.style.cursor = `url("${clickCursorImage}"), auto`
-            }
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="src/libs/particles.min.js"></script>
+    <!-- disable-devtool CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js"></script>
+    <script src="dist/main.js"></script>
 
-            // Function to revert cursor to the previous image
-            function revertCursorToPrevious() {
-                myCanvas.style.cursor = `url("${defaultCursorImage}"), auto`
-            }
+    <script>
+        let defaultCursorImage = "assets/image/cursor.png"
+        let clickCursorImage = "assets/image/cursor-click.png"
 
-            // Add event listeners for mouse click and release
-            myCanvas.addEventListener("mousedown", changeCursorToCustomImage)
-            myCanvas.addEventListener("mouseup", revertCursorToPrevious)
+        // Function to change cursor to a custom image
+        const myCanvas = document.getElementById("myCanvas")
+        function changeCursorToCustomImage() {
+            myCanvas.style.cursor = `url("${clickCursorImage}"), auto`
+        }
 
-            // register service worker
-            if ("serviceWorker" in navigator) {
-                window.addEventListener("load", () => {
-                    navigator.serviceWorker
-                        .register("dist/service-worker.js")
-                        .then((registration) => {
-                            console.log("SW registered: ", registration)
-                        })
-                        .catch((registrationError) => {
-                            console.log("SW registration failed: ", registrationError)
-                        })
-                })
-            }
-        </script>
-    </body>
+        // Function to revert cursor to the previous image
+        function revertCursorToPrevious() {
+            myCanvas.style.cursor = `url("${defaultCursorImage}"), auto`
+        }
+
+        // Add event listeners for mouse click and release
+        myCanvas.addEventListener("mousedown", changeCursorToCustomImage)
+        myCanvas.addEventListener("mouseup", revertCursorToPrevious)
+
+        // register service worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("dist/service-worker.js")
+                    .then((registration) => {
+                        console.log("SW registered: ", registration)
+                    })
+                    .catch((registrationError) => {
+                        console.log("SW registration failed: ", registrationError)
+                    })
+            })
+        }
+
+     
+    </script>
+</body>
+
 </html>
